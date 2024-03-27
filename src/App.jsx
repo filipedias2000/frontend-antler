@@ -1,8 +1,16 @@
+import Footer from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import Homepage from "./components/pages/HomePage";
+
 function App() {
   return (
-    <>
-      <h1 className="bg-stone-400 border-2 ">Hello new app</h1>
-    </>
+    <div className=" grid h-screen grid-rows-[auto_1fr_auto]">
+      <Navbar />
+      <main>
+        <Homepage />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
