@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAM6rPPe-jDSvkRA5reG4jFeumqNkvRv6A",
-  authDomain: "antler-cupponapp.firebaseapp.com",
-  projectId: "antler-cupponapp",
-  storageBucket: "antler-cupponapp.appspot.com",
-  messagingSenderId: "473203930831",
-  appId: "1:473203930831:web:a3d6760cc74473282469ba",
-  measurementId: "G-Q5SXF3CF7K",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
