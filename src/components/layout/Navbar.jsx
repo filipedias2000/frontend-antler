@@ -1,14 +1,18 @@
+
+=======
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 import { doSignOut } from "../../firebase/auth";
 import { useAuth } from "../../context/authContext";
 
+
 function Navbar() {
   const Links = [
     { name: "About", ref: "#about" },
-    { name: "Become a member", ref: "/become-partner" },
+    { name: "Become a member", ref: "/become-partner"},
     { name: "Contact", ref: "#contact" },
+    { name: "Login", ref: "/partners-login"}
   ];
 
   const [open, setOpen] = useState(false);
