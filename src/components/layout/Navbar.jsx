@@ -1,5 +1,11 @@
-import { useEffect, useState, useContex } from "react";
-import { Link, useParams, useLocation} from "react-router-dom";
+
+=======
+import { useEffect, useState } from "react";
+import Button from "../ui/Button";
+import { useNavigate } from "react-router-dom";
+import { doSignOut } from "../../firebase/auth";
+import { useAuth } from "../../context/authContext";
+
 
 function Navbar() {
   const Links = [
@@ -11,11 +17,14 @@ function Navbar() {
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { userLoggedIn } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      console.log(scrollTop);
+
       if (scrollTop > 100) {
         setScrolled(true);
       } else {
@@ -25,6 +34,10 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <header
@@ -62,6 +75,18 @@ function Navbar() {
               </a>
             </li>
           ))}
+          {userLoggedIn ? (
+            <Button
+              text={"Logout"}
+              onClick={() => {
+                doSignOut().then(() => {
+                  navigate("/login");
+                });
+              }}
+            />
+          ) : (
+            <Button text={"Login"} onClick={handleLogin} />
+          )}
         </ul>
       </nav>
     </header>
