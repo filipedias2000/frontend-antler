@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContex } from "react";
+import { Link, useParams, useLocation} from "react-router-dom";
 
 function Navbar() {
   const Links = [
     { name: "About", ref: "#about" },
-    { name: "Become a member", ref: "#members" },
+    { name: "Become a member", ref: "/become-partner"},
     { name: "Contact", ref: "#contact" },
+    { name: "Login", ref: "/partners-login"}
   ];
 
   const [open, setOpen] = useState(false);
@@ -32,7 +34,7 @@ function Navbar() {
     >
       <nav className="flex justify-between items-center max-w-6xl mx-auto px-2">
         <div>
-          <a href="#home" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <i className="fa-solid fa-ticket text-3xl"></i>
             <p>CupponApp</p>
           </a>

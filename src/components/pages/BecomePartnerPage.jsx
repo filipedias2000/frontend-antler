@@ -14,21 +14,21 @@ function BecomePartnerPage() {
     };
     
     return (
-        <div className="flex justify-center">
-            <h1 className="flex block">NeoTaste-Partner werden</h1>
-
-
-            <p className="flex block">Jetzt unverbindlich mehr Infos erhalten. Wir melden uns!</p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col p-12 ">
+        <div className="min-h-screen flex items-center justify-center ">
+            <form onSubmit={handleSubmit} className=" ">
+                <h1 className="flex block ">NeoTaste-Partner werden</h1>
+                <br/>
+                <p className="flex block ">Jetzt unverbindlich mehr Infos erhalten. 
+                Wir melden uns!</p>
+                <br/>
                 
-                <label for="restaurant" className="flex block " >Restaurant</label>
-                <input type="text" name="restaurant" id="restaurant" className=" flex block "/>
-                <label for="city" className="flex block ">Stadt</label>
-                <input type="text" name="city" id="city" className="flex block "/>
-                <label for="contact-person" className="flex block ">Ansprechpartner</label>
+                <label for="restaurant" className="block " >Restaurant</label>
+                <input type="text" name="restaurant" id="restaurant" className="flex block"/>
+                <label for="city" className="flex block">Stadt</label>
+                <input type="text" name="city" id="city" className="flex block"/>
+                <label for="contact-person" className="flex block">Ansprechpartner</label>
                 <input type="text" name="contact-person" id="contact-person" 
-                className="flex block "/>
+                className="flex block"/>
                 <label for="email" className="flex block ">E-mail</label>
                 <input type="email" name="email" id="email" className="flex block "/>
                 <label for="phone-number" className="flex block ">Telefonnummer</label>
