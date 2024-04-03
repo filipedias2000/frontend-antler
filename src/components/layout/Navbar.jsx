@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
+import Button from "../ui/Button";
+import { useNavigate } from "react-router-dom";
+import { doSignOut } from "../../firebase/auth";
+import { useAuth } from "../../context/authContext";
 
 function Navbar() {
   const Links = [
     { name: "About", ref: "#about" },
-    { name: "Become a member", ref: "#members" },
+    { name: "Become a member", ref: "/become-partner" },
     { name: "Contact", ref: "#contact" },
   ];
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { userLoggedIn } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      console.log(scrollTop);
+
       if (scrollTop > 100) {
         setScrolled(true);
       } else {
@@ -24,6 +31,10 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <header
       className={`w-full py-4 lg:px-0 px-5 sm:px-6 z-[999] duration-300 ${
@@ -32,7 +43,7 @@ function Navbar() {
     >
       <nav className="flex justify-between items-center max-w-6xl mx-auto px-2">
         <div>
-          <a href="#home" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <i className="fa-solid fa-ticket text-3xl"></i>
             <p>CupponApp</p>
           </a>
@@ -60,6 +71,18 @@ function Navbar() {
               </a>
             </li>
           ))}
+          {userLoggedIn ? (
+            <Button
+              text={"Logout"}
+              onClick={() => {
+                doSignOut().then(() => {
+                  navigate("/login");
+                });
+              }}
+            />
+          ) : (
+            <Button text={"Login"} onClick={handleLogin} />
+          )}
         </ul>
       </nav>
     </header>
